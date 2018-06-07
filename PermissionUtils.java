@@ -129,4 +129,12 @@ public class PermissionUtils {
         }
         return list.isEmpty();
     }
+
+    class Constants {
+        static final int PERMISSIONS_REQUEST_READ_LOCATION = 1;
+        static final int PERMISSIONS_REQUEST_CAMERA = 2;
+        static final int PERMISSIONS_REQUEST_STORAGE = 3;
+        static final int PERMISSIONS_REQUEST_IDENTIFIER = 4;
+        static final int PERMISSIONS_REQUEST_PHONE_CALL = 5;
+    }
 }
