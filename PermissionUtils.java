@@ -16,10 +16,10 @@ import java.util.List;
 public class PermissionUtils {
 
     public static void requestCameraPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.CAMERA
         };
-        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissions);
     }
 
     public static boolean checkCameraPermission(Activity activity) {
