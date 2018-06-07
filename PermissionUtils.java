@@ -23,82 +23,82 @@ public class PermissionUtils {
     }
 
     public static boolean checkCameraPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.CAMERA
         };
-        return permissionGranted(activity, permissoes);
+        return permissionGranted(activity, permissions);
     }
 
     public static void requestCameraStoragePermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
-        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissions);
     }
 
     public static boolean checkCameraStoragePermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
-        return permissionGranted(activity, permissoes);
+        return permissionGranted(activity, permissions);
     }
 
     public static void requestStoragePermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
-        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_STORAGE, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_STORAGE, permissions);
     }
 
     public static boolean checkStoragePermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
-        return permissionGranted(activity, permissoes);
+        return permissionGranted(activity, permissions);
     }
 
     public static void requestIdentifierPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.READ_PHONE_STATE,
         };
-        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_IDENTIFIER, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_IDENTIFIER, permissions);
     }
 
     public static boolean checkIdentifierPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.READ_PHONE_STATE
         };
-        return permissionGranted(activity, permissoes);
+        return permissionGranted(activity, permissions);
     }
 
     public static void requestPhoneCallPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.CALL_PHONE,
         };
-        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_PHONE_CALL, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_PHONE_CALL, permissions);
     }
 
     public static boolean checkPhoneCallPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.CALL_PHONE
         };
-        return permissionGranted(activity, permissoes);
+        return permissionGranted(activity, permissions);
     }
 
     public static void requestLocationPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION
         };
-        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_READ_LOCATION, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_READ_LOCATION, permissions);
     }
 
     public static boolean checkLocationPermission(Activity activity) {
-        String[] permissoes = new String[]{
+        String[] permissions = new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION
         };
-        return permissionGranted(activity, permissoes);
+        return permissionGranted(activity, permissions);
     }
 
     public static void requestPermission(Activity activity, int requestCode, String... permissions) {
