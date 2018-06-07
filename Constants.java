@@ -1,4 +1,4 @@
-package br.gov.caixa.sifec.utils;
+//TODO Add the package
 
 public class Constants {
 

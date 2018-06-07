@@ -1,4 +1,4 @@
-package br.gov.caixa.sifec.utils;
+//TODO Add the package
 
 import android.Manifest;
 import android.app.Activity;
@@ -15,12 +15,11 @@ import java.util.List;
 
 public class PermissionUtils {
 
-
-    public static boolean requestCameraPermission(Activity activity) {
+    public static void requestCameraPermission(Activity activity) {
         String[] permissoes = new String[]{
                 Manifest.permission.CAMERA
         };
-        return PermissionUtils.validate(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissoes);
     }
 
     public static boolean checkCameraPermission(Activity activity) {
@@ -30,12 +29,12 @@ public class PermissionUtils {
         return permissionGranted(activity, permissoes);
     }
 
-    public static boolean requestCameraStoragePermission(Activity activity) {
+    public static void requestCameraStoragePermission(Activity activity) {
         String[] permissoes = new String[]{
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
-        return PermissionUtils.validate(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_CAMERA, permissoes);
     }
 
     public static boolean checkCameraStoragePermission(Activity activity) {
@@ -45,11 +44,12 @@ public class PermissionUtils {
         };
         return permissionGranted(activity, permissoes);
     }
-    public static boolean requestStoragePermission(Activity activity) {
+
+    public static void requestStoragePermission(Activity activity) {
         String[] permissoes = new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
-        return PermissionUtils.validate(activity, Constants.PERMISSIONS_REQUEST_STORAGE, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_STORAGE, permissoes);
     }
 
     public static boolean checkStoragePermission(Activity activity) {
@@ -59,18 +59,25 @@ public class PermissionUtils {
         return permissionGranted(activity, permissoes);
     }
 
-    public static boolean requestIdentifierPermission(Activity activity) {
+    public static void requestIdentifierPermission(Activity activity) {
         String[] permissoes = new String[]{
                 Manifest.permission.READ_PHONE_STATE,
         };
-        return PermissionUtils.validate(activity, Constants.PERMISSIONS_REQUEST_IDENTIFIER, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_IDENTIFIER, permissoes);
     }
 
-    public static boolean requestPhoneCallPermission(Activity activity) {
+    public static boolean checkIdentifierPermission(Activity activity) {
+        String[] permissoes = new String[]{
+                Manifest.permission.READ_PHONE_STATE
+        };
+        return permissionGranted(activity, permissoes);
+    }
+
+    public static void requestPhoneCallPermission(Activity activity) {
         String[] permissoes = new String[]{
                 Manifest.permission.CALL_PHONE,
         };
-        return PermissionUtils.validate(activity, Constants.PERMISSIONS_REQUEST_PHONE_CALL , permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_PHONE_CALL, permissoes);
     }
 
     public static boolean checkPhoneCallPermission(Activity activity) {
@@ -80,18 +87,11 @@ public class PermissionUtils {
         return permissionGranted(activity, permissoes);
     }
 
-    public static boolean checkIdentifierAndStoragePermission(Activity activity) {
-        String[] permissoes = new String[]{
-                Manifest.permission.READ_PHONE_STATE,
-        };
-        return permissionGranted(activity, permissoes);
-    }
-
-    public static boolean requestLocationPermission(Activity activity) {
+    public static void requestLocationPermission(Activity activity) {
         String[] permissoes = new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION
         };
-        return PermissionUtils.validate(activity, Constants.PERMISSIONS_REQUEST_READ_LOCATION, permissoes);
+        PermissionUtils.requestPermission(activity, Constants.PERMISSIONS_REQUEST_READ_LOCATION, permissoes);
     }
 
     public static boolean checkLocationPermission(Activity activity) {
@@ -101,8 +101,7 @@ public class PermissionUtils {
         return permissionGranted(activity, permissoes);
     }
 
-
-    public static boolean validate(Activity activity, int requestCode, String... permissions) {
+    public static void requestPermission(Activity activity, int requestCode, String... permissions) {
         List<String> list = new ArrayList<>();
         for (String permission : permissions) {
             boolean ok = ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED;
@@ -111,28 +110,23 @@ public class PermissionUtils {
             }
         }
         if (list.isEmpty()) {
-            return true;
+            return;
         }
 
         String[] newPermissions = new String[list.size()];
         list.toArray(newPermissions);
 
         ActivityCompat.requestPermissions(activity, newPermissions, requestCode);
-
-        return false;
     }
 
     public static boolean permissionGranted(Activity activity, String... permissions) {
         List<String> list = new ArrayList<>();
         for (String permission : permissions) {
-            boolean ok = ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED;
-            if (!ok) {
+            boolean granted = ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED;
+            if (!granted) {
                 list.add(permission);
             }
         }
-        if (list.isEmpty()) {
-            return true;
-        }
-        return false;
+        return list.isEmpty();
     }
 }
